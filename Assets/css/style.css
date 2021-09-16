@@ -33,24 +33,18 @@ header {
   padding: 0rem 1rem 0rem 2rem;
 }
 
-.outer {
-    width: 500px;
-    height: 300px;
-    overflow: scroll;
-    padding-left: 150px;
-  }
-
 
 main {
-  width: 32%;
+  width: 50%;
   margin: auto;
 }
 
 #answers {
-    width: 300px;
+    width: 450px;
     height: 100px;
     padding: 0px 10px 10px;
     border: 1px solid black;
+    font-size: 14px;
   }
   
 .justify-center {
@@ -103,12 +97,11 @@ span[data-descr]:focus::after {
   z-index: 1;
 }
 
-/* Mobile-first: use `min-width` values going from narrow -> wide */
+/* Mobile-first: use `max-width` values going from narrow -> wide */
 @media screen and (max-width: 480px) {
   .header {
     display: block;
   }
-
 
   .header h1 a {
     float: none;
@@ -116,7 +109,7 @@ span[data-descr]:focus::after {
     text-align: left;
   }
   
-  .header nav {
+  .header div {
     flex-direction: column;
     float: none;
   }
@@ -134,8 +127,7 @@ span[data-descr]:focus::after {
   }
 }
 
-/* Mobile-first: use `min-width` values for medium size window */
-
+/* Mobile-first: use `max-width` values for medium size window */
 @media screen and (max-width: 768px) {
   header {
     flex-direction: column;
@@ -151,9 +143,9 @@ span[data-descr]:focus::after {
 
 /* media query for larger screens */
 @media screen and (min-width: 992px) {
-  /* header {
-    width: 100%;
-  } */
+  header div {
+    flex-direction: column;
+  }
 
   .card-column {
     /* Put three cards across */
