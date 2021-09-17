@@ -1,8 +1,10 @@
 
-var score = document.querySelector("#scoreboard").textContent;
+// var score = 
+var score = 0;
 var numList = document.querySelectorAll("#num");
 var textList = document.querySelectorAll("#text");
 var q = document.querySelector("h3");
+var feedback = document.querySelector("#feedback");
 
 function refreshQuizItem (ndx) {
   var quizItem = questionList[ndx];
@@ -27,6 +29,7 @@ function gameOver() {
   gameOn = false;
   h4.textContent = "GAME OVER";
   secondsLeft = 0;
+  console.log("score: " + score);
 }
 
 function setTime() {
@@ -47,9 +50,11 @@ function setTime() {
 function scoreAnswer(key, ndx) {
   if (key === questionList[ndx].Answer) {
     score++;
-    document.querySelector("#scoreboard").textContent = score;
+    feedback.textContent = "Correct"
+    // document.querySelector("#scoreboard").textContent = score;
   } else {
     secondsLeft -= 10;
+    feedback.textContent = "Wrong"
   }
   quizNdx++;
   if (quizNdx == questionList.length) {
@@ -78,6 +83,8 @@ function catchKey(e) {
   }
 }
 
-gameOn = true;
-refreshQuizItem(quizNdx);
-setTime(secondsLeft);
+function startQuiz() {
+  gameOn = true;
+  refreshQuizItem(quizNdx);
+  setTime(secondsLeft);
+}

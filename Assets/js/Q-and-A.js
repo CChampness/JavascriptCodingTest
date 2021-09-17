@@ -1,27 +1,27 @@
 var questionList = [
   {"Question": "What is an element?",
    "a": "Most general base class from which all element objects inherit",
-   "b": "tbd",
-   "c": "tbd",
-   "d": "tbd",
+   "b": "A substance in chemistry class",
+   "c": "Part of an HTML page",
+   "d": "A restaurant in Easley, South Carolina",
    "Answer": "a"
   },
   {"Question": "What is a method?",
-   "a": "tbd",
+   "a": "The techniques you use to build software",
    "b": "Function which an object makes available to its callers",
-   "c": "tbd",
-   "d": "tbd",
+   "c": "How a function returns a value",
+   "d": "All of the above",
    "Answer": "b"
   },
-  {"Question": "What is a property?",
-   "a": "tbd",
-   "b": "tbd",
-   "c": "tbd",
+  {"Question": "What are properties?",
+   "a": "Piece of land",
+   "b": "Jewelry and furs",
+   "c": "Variables defined in a function",
    "d": "Values associated with a JavaScript object",
    "Answer": "d"
   },
   {
-   "Question": "Commonly use data types DO NOT include _____",
+   "Question": "Commonly used data types DO NOT include:",
    "a": "strings",
    "b": "booleans",
    "c": "alerts",
@@ -29,7 +29,7 @@ var questionList = [
    "Answer": "c"
   },
   {
-   "Question": "The condition in an if/else statement is enclosed within ______",
+   "Question": "The condition in an if/else statement is enclosed within:",
    "a": "curly brackets",
    "b": "parentheses",
    "c": "square brackets",
@@ -37,7 +37,7 @@ var questionList = [
    "Answer": "b"
   },
   {
-   "Question": "A very useful tool used during development and debugging for printing content to the debugger is ______",
+   "Question": "A very useful tool used during development and debugging for printing content to the debugger is:",
    "a": "javascript",
    "b": "for loops",
    "c": "console.log",
@@ -45,7 +45,7 @@ var questionList = [
    "Answer": "c"
   },
   {
-   "Question": "String values must be enclose within ______ ",
+   "Question": "String values must be enclose within:",
    "a": "curly brackets",
    "b": "quotes",
    "c": "parentheses",
@@ -53,7 +53,7 @@ var questionList = [
    "Answer": "b"
   },
   {
-   "Question": "Arrays in JavaScript can be used to store ______",
+   "Question": "Arrays in JavaScript can be used to store:",
    "a": "numbers and strings",
    "b": "booleans",
    "c": "others arrays",
