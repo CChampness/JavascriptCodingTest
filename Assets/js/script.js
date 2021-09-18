@@ -25,7 +25,16 @@ var secondsLeft = 60
 var gameOn = false;
 
 var h4 = document.querySelector("h4");
+
 function gameOver() {
+  numList[0].textContent = "";
+  numList[1].textContent = "";
+  numList[2].textContent = "";
+  numList[3].textContent = "";
+  textList[0].textContent = "";
+  textList[1].textContent = "";
+  textList[2].textContent = "";
+  textList[3].textContent = "";
   gameOn = false;
   h4.textContent = "GAME OVER";
   secondsLeft = 0;
@@ -84,6 +93,7 @@ function catchKey(e) {
 }
 
 function startQuiz() {
+  document.querySelector("button").style.display = "none";
   gameOn = true;
   refreshQuizItem(quizNdx);
   setTime(secondsLeft);

@@ -50,7 +50,6 @@ main h3 {
     font-size: 14px;
     
   }
-
    
 #num {
   font-size: 16px;
@@ -65,7 +64,13 @@ div h4 {
   justify-content: center;
 }
 
+button {
+  margin: 50px 0px 0px 150px;
+}
 
+p {
+  margin-left: 150;
+}
 
 h1 {
   font-size: 3rem;

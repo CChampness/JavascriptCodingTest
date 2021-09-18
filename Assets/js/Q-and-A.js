@@ -45,7 +45,7 @@ var questionList = [
    "Answer": "c"
   },
   {
-   "Question": "String values must be enclose within:",
+   "Question": "String values must be enclosed within:",
    "a": "curly brackets",
    "b": "quotes",
    "c": "parentheses",
