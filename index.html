@@ -16,23 +16,30 @@
     <div>
       <h2>Time Remaining</h2>
       <h4>00</h4>
+      <!-- <h5 id="scoreBox"></h5> -->
     </div>
   </header>
   
   <main>
-
     <h3>Instructions for this quiz</h3>
     <section id="answers">
       <ul>
-        <li><span id="num"></span><span id="text"></span></li>
-        <li><span id="num"></span><span id="text"></span></li>
-        <li><span id="num"></span><span id="text"></span></li>
-        <li><span id="num"></span><span id="text"></span></li>
+        <li><span class="num"></span><span class="text"></span></li>
+        <li><span class="num"></span><span class="text"></span></li>
+        <li><span class="num"></span><span class="text"></span></li>
+        <li><span class="num"></span><span class="text"></span></li>
       </ul>
+      <div id = "initials">
+        Enter your initials here to save your score: 
+        <input type="text" id="ini"  size="5" value="">
+        <button id = "endButton" onclick="getInitials()">Save</button>
+      </div>
     </section>
+    <!-- <input type="text" id="pdq" name="pdq"> -->
+
     <p id = "feedback"></p>
     <section id="start-and-stop">
-      <button onclick="startQuiz()">START QUIZ</button>
+      <button id = "startButton" onclick="startQuiz()">START QUIZ</button>
     </section>
   </main>
   <footer>

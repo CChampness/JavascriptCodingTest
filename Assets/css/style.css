@@ -48,7 +48,6 @@ main h3 {
     padding: 10px 0px 50px 0px;
     border: 1px solid black;
     font-size: 14px;
-    
   }
    
 #num {
@@ -59,12 +58,27 @@ main h3 {
 div h4 {
   color: red;
 }
-  
+ 
+#scoreBox {
+  color: red;
+}
+
+#feedback {
+  font-style: italic;
+  position: relative;
+  left: 200px;
+  padding: 10px;
+}
+
+#initials {
+  display: none;
+}
+
 .justify-center {
   justify-content: center;
 }
 
-button {
+#startButton {
   margin: 50px 0px 0px 150px;
 }
 
