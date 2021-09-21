@@ -43,10 +43,10 @@ function getInitials() {
   }
 
   // Read our new initials and score
-  // var iniIn = document.querySelector("#ini");
   initialItem.name = iniIn.value;
   initialItem.score = score;
-// CHANGE TO IGNORE CASE!!!
+  // CHANGE INITIALS TO UPPER CASE
+  initialItem.name = initialItem.name.toUpperCase();
   var found = false;
   for(var i = 0; i < listOfInitials.length && !found; i++) {
     if (initialItem.name === listOfInitials[i].name) {
