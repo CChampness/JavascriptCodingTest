@@ -13,15 +13,28 @@
 <body>
   <header>
     <h1 class="page-title">Coding Quiz Challenge</h1>
+     <button id = "viewHighButton" onclick="viewHighScores()">View high scores</button>
+
     <div>
       <h2>Time Remaining</h2>
-      <h4>00</h4>
-      <!-- <h5 id="scoreBox"></h5> -->
+      <h4 id="timeClock">60</h4>
     </div>
   </header>
   
   <main>
-    <h3>Instructions for this quiz</h3>
+    <h3 id="question">Instructions for this quiz</h3>
+    <section id="instructions">
+      You will be given a series of multiple-choice questions to answer.
+      The answer choices will be numbered 1 through 4.  Choose the correct
+      answer and type in its number. You will have 60 seconds to complete
+      the test.  The test will be complete when you have answered all of 
+      the questions or your time has expired, whichever comes first.
+      Wrong answers are penalized by subtracting 10 seconds from your
+      remaining time.  Your score will be reported at the end and you 
+      will be able to save your scores with only your highest score being
+      saved.  The timer will start when you press the Start Quiz button.
+      Good luck!
+    </section>
     <section id="answers">
       <ul>
         <li><span class="num"></span><span class="text"></span></li>
@@ -29,11 +42,19 @@
         <li><span class="num"></span><span class="text"></span></li>
         <li><span class="num"></span><span class="text"></span></li>
       </ul>
-      <div id = "initials">
+    </section>
+    <section id = "initials">
         Enter your initials here to save your score: 
-        <input type="text" id="ini"  size="5" value="">
+        <input type="text" id="ini" size="5" value="">
         <button id = "endButton" onclick="getInitials()">Save</button>
-      </div>
+    </section>
+    <section id = "highscores">
+        <button id = "goBackButton" onclick="goBack()">Retake Quiz</button>
+        <button id = "clearHighButton" onclick="clearHigh()">Clear high scores</button>
+        <div id="scoreresults">
+          <ul id="scoreList">
+          </ul>
+        </div>
     </section>
     <!-- <input type="text" id="pdq" name="pdq"> -->
 

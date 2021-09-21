@@ -2,11 +2,13 @@
 var score = 0;
 var numList = document.querySelectorAll(".num");
 var textList = document.querySelectorAll(".text");
-var q = document.querySelector("h3");
+var question = document.querySelector("#question");
 var feedback = document.querySelector("#feedback");
-// var scoreBox = document.querySelector("#scoreBox");
 var answerBox = document.querySelector("#answers");
-var initials =  document.querySelector("#initials");
+var instructionBox = document.querySelector("#instructions");
+var initials = document.querySelector("#initials");
+var iniIn = document.querySelector("#ini");
+var hiScores = document.querySelector("#highscores");
 var initialItem = {
   name: "",
   score: 0,
@@ -14,7 +16,7 @@ var initialItem = {
 
 function refreshQuizItem (ndx) {
   var quizItem = questionList[ndx];
-  q.textContent = quizItem.Question;
+  question.textContent = quizItem.Question;
   numList[0].textContent = "1. ";
   numList[1].textContent = "2. ";
   numList[2].textContent = "3. ";
@@ -32,7 +34,7 @@ var trialList = [];
 // This function is called when the "Save" button event fires.
 function getInitials() {
   // Read in the stored list, if any
-  trialList = JSON.parse(localStorage.getItem("initials"));
+  trialList = JSON.parse(localStorage.getItem("scoreList"));
   
   // If trialList is null, we would not be able to push to it.
   if (trialList) {
@@ -41,9 +43,8 @@ function getInitials() {
   }
 
   // Read our new initials and score
-  var initials = document.querySelector("#ini");
-  console.log("read in:" + initials.value);
-  initialItem.name = initials.value;
+  // var iniIn = document.querySelector("#ini");
+  initialItem.name = iniIn.value;
   initialItem.score = score;
 // CHANGE TO IGNORE CASE!!!
   var found = false;
@@ -59,21 +60,59 @@ function getInitials() {
   if (!found) {
     listOfInitials.push(initialItem);
   }
-  localStorage.setItem("initials", JSON.stringify(listOfInitials));
- }
+  localStorage.setItem("scoreList", JSON.stringify(listOfInitials));
 
-function reportHighScores() {
+  // Clean up the answer box
+  initials.textContent = "";
+}
 
+function viewHighScores() {
+  // Read in the stored list, if any
+  trialList = JSON.parse(localStorage.getItem("scoreList"));
+  hiScores.style.display = "block";
+  // If trialList is null, we would not be able to push to it.
+  if (trialList) {
+    // If trialList is NOT null, we want to collect everything in it.
+    listOfInitials = trialList;
+  } else {
+    console.log("No scores listed");
+    var node = document.createElement("LI");
+    var textnode = document.createTextNode("No scores listed");
+    node.appendChild(textnode);
+    document.querySelector("#scoreList").appendChild(node);
+    return;
+  }
+
+  initialItem.name = iniIn.value;
+  initialItem.score = score;
+
+  for(var i = 0; i < listOfInitials.length; i++) {
+    console.log(listOfInitials[i].name + " " + listOfInitials[i].score);
+    var node = document.createElement("li");
+    var textnode = document.createTextNode(listOfInitials[i].name + " scored " + listOfInitials[i].score);
+    node.appendChild(textnode);
+    document.querySelector("#scoreList").appendChild(node);
+  }
+}
+
+function clearHigh() {
+  localStorage.removeItem("scoreList");
+}
+
+function goBack () {
+  location.reload();
 }
 
 var quizNdx = 0;
-var secondsLeft = 60
+var secondsLeft = 10
+// gameOn is false before the quiz starts,
+// when the time is expired,
+// or when all questions are answered.
 var gameOn = false;
 
-var h4 = document.querySelector("h4");
+var timeClock = document.querySelector("#timeClock");
 
 function gameOver(timeIsUp) {
-  console.log("time is up=" + timeIsUp)
   numList[0].textContent = "";
   numList[1].textContent = "";
   numList[2].textContent = "";
@@ -84,31 +123,35 @@ function gameOver(timeIsUp) {
   textList[3].textContent = "";
   gameOn = false;
   if (timeIsUp) {
-    h4.textContent = "TIME EXPIRED";
+    timeClock.textContent = "TIME EXPIRED";
   } else {
-    h4.textContent = "";
+    timeClock.textContent = "QUIZ COMPLETE";
   }
-  // scoreBox.textContent = "Your final score is " + score;
+  
   secondsLeft = 0;
-  console.log("score: " + score);
   feedback.textContent = "";
-  q.textContent = "All done. Your final score is " + score;
+  question.textContent = "All done. Your final score is " + score;
+  answerBox.style.display = "none";
   initials.style.display = "inline";
-  reportHighScores();
+  hiScores.style.display = "block";
+  // viewHighScores();
 }
 
 function setTime() {
-  h4.textContent = secondsLeft;
+  // This happens once, when the quiz first starts
+  timeClock.textContent = secondsLeft;
   // Sets interval in variable
   var timerInterval = setInterval(function() {
   secondsLeft--;
-  h4.textContent = secondsLeft;
  
-  if(secondsLeft <= 0) {
+  if(secondsLeft > 0) {
+    // This happens every second, when the anonymous function gets triggered
+    timeClock.textContent = secondsLeft;
+  } else {
     // Stops execution of action at set interval
     clearInterval(timerInterval);
     // Calls function to end the game
-    // "true" indicates time is up
+    // "true" indicates time ran out, time is up
     if (gameOn) {
       gameOver(true);
     }
@@ -153,6 +196,8 @@ function catchKey(e) {
 
 function startQuiz() {
   document.querySelector("#startButton").style.display = "none";
+  answerBox.style.display = "block";
+  instructionBox.style.display = "none";
   gameOn = true;
   refreshQuizItem(quizNdx);
   setTime(secondsLeft);

@@ -48,9 +48,27 @@ main h3 {
     padding: 10px 0px 50px 0px;
     border: 1px solid black;
     font-size: 14px;
-  }
+    display: none;
+}
+
+#highscores {
+    width: 125px;
+    height: 200px;
+    padding: 10px 0px 50px 0px;
+    border: 1px solid black;
+    font-size: 14px;
+    display: none;
+}
    
-#num {
+#instructions {
+  width: 450px;
+  height: 160px;
+  padding: 10px 10px 50px 10px;
+  border: 1px solid black;
+  font-size: 14px;
+}
+
+  #num {
   font-size: 16px;
   font-weight: bolder;
 }
@@ -74,12 +92,16 @@ div h4 {
   display: none;
 }
 
+#highscores {
+  display: none;
+}
+
 .justify-center {
   justify-content: center;
 }
 
 #startButton {
-  margin: 50px 0px 0px 150px;
+  margin: 40px 0px 0px 150px;
 }
 
 p {
