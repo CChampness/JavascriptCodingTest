@@ -46,23 +46,29 @@
     <section id = "initials">
         Enter your initials here to save your score: 
         <input type="text" id="ini" size="5" value="">
-        <button id = "endButton" onclick="getInitials()">Save</button>
+        <button id = "endbutton" onclick="getInitials()">Save</button>
     </section>
     <section id="doneButtons">
       <button id = "gobackbutton" onclick="goBack()">Retake Quiz</button>
       <button id = "clearhighbutton" onclick="clearHigh()">Clear high scores</button>
     </section>
     <section id = "highscores">
-      <ul id="scoreview"></ul>
+      <h5>High scores</h5>
+      <div id="scoreboard">
+        <ul id="scoreview"></ul>
+      </div>
     </section>
-    <!-- <input type="text" id="pdq" name="pdq"> -->
-
+  
     <p id = "feedback"></p>
     <section id="start-and-stop">
       <button id = "startbutton" onclick="startQuiz()">START QUIZ</button>
     </section>
   </main>
+  <br>
+  <hr>
   <footer>
+    <br>
+    <p style="color:blue;font-size:9px;"><span>&copy</span>CSQS, LLC</p>
   </footer>
 </body>
 <script src="./Assets/js/Q-and-A.js"></script>

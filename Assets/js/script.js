@@ -36,7 +36,7 @@ function refreshQuizItem (ndx) {
   textList[3].textContent = quizItem.d;
 }
 
-var numOfInitials = 0;
+// var numOfInitials = 0;
 var listOfInitials = [];
 var trialList = [];
 
@@ -63,7 +63,7 @@ function getInitials() {
       if (initialItem.score > listOfInitials[i].score) {
         listOfInitials[i].score = initialItem.score;
       }
-      console.log("listOfInitials[i].name " + listOfInitials[i].name);
+      // console.log("listOfInitials[i].name " + listOfInitials[i].name);
     }
   }
   if (!found) {
@@ -90,17 +90,7 @@ function viewHighScores() {
   clearBtn.style.display = "inline";
   hiScores.style.display = "block";
 
-  // list = document.querySelectorAll("#scoreList");
-  // var i = 0;
-  // while (scoreView.removeChild[i++]);
-
-  var node = document.createElement("li");
-
-  node.style.textDecoration = "underline";
-  var textnode = document.createTextNode("High scores");
-  node.appendChild(textnode);
-  // document.querySelector("#scorelist").appendChild(node);
-  scoreView.appendChild(node);
+ var node = document.createElement("li");
 
   // Read in the stored list, if any
   trialList = JSON.parse(localStorage.getItem("scoreList"));
@@ -114,7 +104,6 @@ function viewHighScores() {
     var node = document.createElement("LI");
     var textnode = document.createTextNode("No scores listed");
     node.appendChild(textnode);
-    // document.querySelector("#
     scoreView.appendChild(node);
     return;
   }
@@ -123,27 +112,33 @@ function viewHighScores() {
   initialItem.score = score;
 
   for(var i = 0; i < listOfInitials.length; i++) {
-    console.log(listOfInitials[i].name + " " + listOfInitials[i].score);
+    // console.log(listOfInitials[i].name + " " + listOfInitials[i].score);
     var node = document.createElement("li");
     var textnode = document.createTextNode(listOfInitials[i].name + " scored " + listOfInitials[i].score);
     node.appendChild(textnode);
-    // document.querySelector("#scoreview").appendChild(node);
     scoreView.appendChild(node);
   }
 }
 
 function clearHigh() {
   localStorage.removeItem("scoreList");
-  viewHighScores();
+  var inList = document.querySelector("#scoreview");
+  while (inList.firstChild) {
+    inList.removeChild(inList.firstChild);
+  }
+
+  hiScores.style.display = "none";
   clearBtn.style.display = "none";
+  viewHiBtn.style.display = "inline-block";
 }
 
+// Retake the quiz
 function goBack () {
   location.reload();
 }
 
 var quizNdx = 0;
-var secondsLeft = 10
+var secondsLeft = 60;
 // gameOn is false before the quiz starts,
 // when the time is expired,
 // or when all questions are answered.
@@ -170,8 +165,6 @@ function gameOver(timeIsUp) {
   question.textContent = "All done. Your final score is " + score;
   answerBox.style.display = "none";
   initials.style.display = "inline";
-  // hiScores.style.display = "block";
-  // viewHighScores();
 }
 
 function setTime() {
@@ -208,6 +201,7 @@ function scoreAnswer(key, ndx) {
     // Time not expired, user answered all questions
     gameOver(false);
   } else {
+    // Time not expired, still more questions
     refreshQuizItem(quizNdx);
   }
 }

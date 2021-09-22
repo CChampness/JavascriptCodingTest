@@ -3,6 +3,7 @@
   --light-border: #e0eae4;
   --dark-blue-green: #1b404e;
   --pop-box-text: "Click inside the box for details";
+  --btn-bg: rgb(96, 105, 128);
 }
 
 * {
@@ -52,12 +53,17 @@ main h3 {
 }
 
 #highscores {
-    width: 125px;
-    height: 200px;
+  padding: 10px;
+  display: none;
+}
+
+#scoreboard {
+    width: 150px;
+    height: 100px;
     padding: 10px 10px 50px 10px;
     border: 1px solid black;
     font-size: 14px;
-    display: none;
+    overflow: scroll;
 }
    
 #instructions {
@@ -75,12 +81,24 @@ main h3 {
 
 #gobackbutton {
   display: none;
-  padding: 5px 5px 5px 5px
+  padding: 5px;
+  margin: 10px;
+}
+
+#gobackbutton:hover {
+  color: white;
+  background-color: rgb(96, 105, 128);
 }
 
 #clearhighbutton {
   display: none;
-  padding: 5px 5px 5px 5px
+  padding: 5px;
+  margin: 10px;
+}
+
+#clearhighbutton:hover {
+  color: white;
+  background-color: rgb(96, 105, 128);
 }
 
 #num {
@@ -115,8 +133,25 @@ div h4 {
   justify-content: center;
 }
 
+#viewhighbutton:hover {
+  color: white;
+  background-color: rgb(96, 105, 128);
+  padding: 2px;
+}
+
 #startbutton {
   margin: 40px 0px 0px 150px;
+}
+
+#startbutton:hover {
+  color: white;
+  background-color: rgb(96, 105, 128);
+  padding: 2px;
+}
+
+#endbutton:hover {
+  color: white;
+  background-color: rgb(96, 105, 128);
 }
 
 p {
@@ -138,21 +173,25 @@ h3 {
 h4 {
   font-size: 1.5rem;
 }
-  
+ 
+h5 {
+  font-size: 1rem;
+}
+
 footer {
   display: flex;
   justify-content:space-around;
   text-decoration: none;
 }
 
-/* Tooltip must have its position relative to its container */
+/* Tooltip must have its position relative to its container
 span[data-descr] {
   position: relative;
-}
+} */
 
 /* Position tooltip above the top left corner of the card.
    Use the same color as header, no border-radius, smaller font size */
-span[data-descr]:hover::after,
+/* span[data-descr]:hover::after,
 span[data-descr]:focus::after {
   content: "Click inside the box for details";
   position: absolute;
@@ -165,7 +204,7 @@ span[data-descr]:focus::after {
   color: white;
   font-size: 80%;
   z-index: 1;
-}
+} */
 
 /* Mobile-first: use `max-width` values going from narrow -> wide */
 @media screen and (max-width: 480px) {
@@ -182,6 +221,16 @@ span[data-descr]:focus::after {
   .header div {
     flex-direction: column;
     float: none;
+  }
+
+  #timerdisp h2 {
+    font-size: 1.5rem;
+    display: inline-flex;
+  }
+
+  #timerdisp h4 {
+    font-size: 1rem;
+    display: inline-flex;
   }
 
   /* on tablets, set columns to only be 50% of the width and not grow */
