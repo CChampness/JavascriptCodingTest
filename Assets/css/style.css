@@ -54,7 +54,7 @@ main h3 {
 #highscores {
     width: 125px;
     height: 200px;
-    padding: 10px 0px 50px 0px;
+    padding: 10px 10px 50px 10px;
     border: 1px solid black;
     font-size: 14px;
     display: none;
@@ -68,7 +68,22 @@ main h3 {
   font-size: 14px;
 }
 
-  #num {
+#doneButtons {
+  display: none;
+  padding: 30px 0px 50px 30px
+}
+
+#gobackbutton {
+  display: none;
+  padding: 5px 5px 5px 5px
+}
+
+#clearhighbutton {
+  display: none;
+  padding: 5px 5px 5px 5px
+}
+
+#num {
   font-size: 16px;
   font-weight: bolder;
 }
@@ -100,7 +115,7 @@ div h4 {
   justify-content: center;
 }
 
-#startButton {
+#startbutton {
   margin: 40px 0px 0px 150px;
 }
 

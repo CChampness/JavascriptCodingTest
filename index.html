@@ -13,11 +13,11 @@
 <body>
   <header>
     <h1 class="page-title">Coding Quiz Challenge</h1>
-     <button id = "viewHighButton" onclick="viewHighScores()">View high scores</button>
+     <button id = "viewhighbutton" onclick="viewHighScores()">View high scores</button>
 
-    <div>
+    <div id="timerdisp">
       <h2>Time Remaining</h2>
-      <h4 id="timeClock">60</h4>
+      <h4 id="timeclock">60</h4>
     </div>
   </header>
   
@@ -48,19 +48,18 @@
         <input type="text" id="ini" size="5" value="">
         <button id = "endButton" onclick="getInitials()">Save</button>
     </section>
+    <section id="doneButtons">
+      <button id = "gobackbutton" onclick="goBack()">Retake Quiz</button>
+      <button id = "clearhighbutton" onclick="clearHigh()">Clear high scores</button>
+    </section>
     <section id = "highscores">
-        <button id = "goBackButton" onclick="goBack()">Retake Quiz</button>
-        <button id = "clearHighButton" onclick="clearHigh()">Clear high scores</button>
-        <div id="scoreresults">
-          <ul id="scoreList">
-          </ul>
-        </div>
+      <ul id="scoreview"></ul>
     </section>
     <!-- <input type="text" id="pdq" name="pdq"> -->
 
     <p id = "feedback"></p>
     <section id="start-and-stop">
-      <button id = "startButton" onclick="startQuiz()">START QUIZ</button>
+      <button id = "startbutton" onclick="startQuiz()">START QUIZ</button>
     </section>
   </main>
   <footer>

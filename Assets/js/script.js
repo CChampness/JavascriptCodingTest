@@ -2,6 +2,9 @@
 var score = 0;
 var numList = document.querySelectorAll(".num");
 var textList = document.querySelectorAll(".text");
+var timerDisp = document.querySelector("#timerdisp");
+var timeClock = document.querySelector("#timeclock");
+var viewHiBtn = document.querySelector("#viewhighbutton");
 var question = document.querySelector("#question");
 var feedback = document.querySelector("#feedback");
 var answerBox = document.querySelector("#answers");
@@ -9,6 +12,12 @@ var instructionBox = document.querySelector("#instructions");
 var initials = document.querySelector("#initials");
 var iniIn = document.querySelector("#ini");
 var hiScores = document.querySelector("#highscores");
+var doneBtns = document.querySelector("#doneButtons");
+var clearBtn = document.querySelector("#clearhighbutton");
+var goBackBtn = document.querySelector("#gobackbutton");
+var startBtn = document.querySelector("#startbutton");
+var scoreView = document.querySelector("#scoreview");
+
 var initialItem = {
   name: "",
   score: 0,
@@ -64,9 +73,35 @@ function getInitials() {
 
   // Clean up the answer box
   initials.textContent = "";
+  doneBtns.style.display = "inline";
+  goBackBtn.style.display = "inline";
+  clearBtn.style.display = "inline";
 }
 
 function viewHighScores() {
+  answerBox.style.display = "none";
+  instructionBox.style.display = "none";
+  timerDisp.style.display = "none";
+  viewHiBtn.style.display = "none";
+  startBtn.style.display = "none";
+  question.style.display = "none";
+  doneBtns.style.display = "inline";
+  goBackBtn.style.display = "inline";
+  clearBtn.style.display = "inline";
+  hiScores.style.display = "block";
+
+  // list = document.querySelectorAll("#scoreList");
+  // var i = 0;
+  // while (scoreView.removeChild[i++]);
+
+  var node = document.createElement("li");
+
+  node.style.textDecoration = "underline";
+  var textnode = document.createTextNode("High scores");
+  node.appendChild(textnode);
+  // document.querySelector("#scorelist").appendChild(node);
+  scoreView.appendChild(node);
+
   // Read in the stored list, if any
   trialList = JSON.parse(localStorage.getItem("scoreList"));
   hiScores.style.display = "block";
@@ -79,7 +114,8 @@ function viewHighScores() {
     var node = document.createElement("LI");
     var textnode = document.createTextNode("No scores listed");
     node.appendChild(textnode);
-    document.querySelector("#scoreList").appendChild(node);
+    // document.querySelector("#
+    scoreView.appendChild(node);
     return;
   }
 
@@ -91,12 +127,15 @@ function viewHighScores() {
     var node = document.createElement("li");
     var textnode = document.createTextNode(listOfInitials[i].name + " scored " + listOfInitials[i].score);
     node.appendChild(textnode);
-    document.querySelector("#scoreList").appendChild(node);
+    // document.querySelector("#scoreview").appendChild(node);
+    scoreView.appendChild(node);
   }
 }
 
 function clearHigh() {
   localStorage.removeItem("scoreList");
+  viewHighScores();
+  clearBtn.style.display = "none";
 }
 
 function goBack () {
@@ -109,8 +148,6 @@ var secondsLeft = 10
 // when the time is expired,
 // or when all questions are answered.
 var gameOn = false;
-
-var timeClock = document.querySelector("#timeClock");
 
 function gameOver(timeIsUp) {
   numList[0].textContent = "";
@@ -133,7 +170,7 @@ function gameOver(timeIsUp) {
   question.textContent = "All done. Your final score is " + score;
   answerBox.style.display = "none";
   initials.style.display = "inline";
-  hiScores.style.display = "block";
+  // hiScores.style.display = "block";
   // viewHighScores();
 }
 
@@ -195,9 +232,10 @@ function catchKey(e) {
 }
 
 function startQuiz() {
-  document.querySelector("#startButton").style.display = "none";
+  startBtn.style.display = "none";
   answerBox.style.display = "block";
   instructionBox.style.display = "none";
+  timerDisp.style.display = "block";
   gameOn = true;
   refreshQuizItem(quizNdx);
   setTime(secondsLeft);
