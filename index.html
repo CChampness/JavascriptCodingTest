@@ -13,8 +13,6 @@
 <body>
   <header>
     <h1 class="page-title">Coding Quiz Challenge</h1>
-     <button id = "viewhighbutton" onclick="viewHighScores()">View high scores</button>
-
     <div id="timerdisp">
       <h2>Time Remaining</h2>
       <h4 id="timeclock">60</h4>
@@ -35,6 +33,7 @@
       saved.  The timer will start when you press the Start Quiz button.
       Good luck!
     </section>
+
     <section id="answers">
       <ul>
         <li><span class="num"></span><span class="text"></span></li>
@@ -43,15 +42,19 @@
         <li><span class="num"></span><span class="text"></span></li>
       </ul>
     </section>
+    
     <section id = "initials">
         Enter your initials here to save your score: 
         <input type="text" id="ini" size="5" value="">
         <button id = "endbutton" onclick="getInitials()">Save</button>
     </section>
+  
     <section id="doneButtons">
       <button id = "gobackbutton" onclick="goBack()">Retake Quiz</button>
       <button id = "clearhighbutton" onclick="clearHigh()">Clear high scores</button>
+      <button id = "viewhighbutton" onclick="viewHighScores()">View high scores</button>
     </section>
+  
     <section id = "highscores">
       <h5>High scores</h5>
       <div id="scoreboard">
@@ -64,7 +67,7 @@
       <button id = "startbutton" onclick="startQuiz()">START QUIZ</button>
     </section>
   </main>
-  <br>
+  <br><br>
   <hr>
   <footer>
     <br>

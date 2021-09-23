@@ -2,7 +2,6 @@
   --bgcol: #3757a9;
   --light-border: #e0eae4;
   --dark-blue-green: #1b404e;
-  --pop-box-text: "Click inside the box for details";
   --btn-bg: rgb(96, 105, 128);
 }
 
@@ -39,16 +38,19 @@ main {
   margin: auto;
 }
 
-main h3 {
+#question {
   padding: 10px;
 }
 
 #answers {
     width: 450px;
     height: 100px;
-    padding: 10px 0px 50px 0px;
+    padding: 10px 0px 50px 10px;
     border: 1px solid black;
     font-size: 14px;
+    border-radius: 10px;
+    box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+    border-collapse: collapse;
     display: none;
 }
 
@@ -72,33 +74,37 @@ main h3 {
   padding: 10px 10px 50px 10px;
   border: 1px solid black;
   font-size: 14px;
+  border-radius: 10px;
+  box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+  border-collapse: collapse;
 }
 
-#doneButtons {
-  display: none;
-  padding: 30px 0px 50px 30px
-}
-
+#clearhighbutton,
 #gobackbutton {
   display: none;
+}
+
+#endbutton,
+#clearhighbutton,
+#gobackbutton,
+#viewhighbutton {
   padding: 5px;
   margin: 10px;
 }
 
-#gobackbutton:hover {
-  color: white;
-  background-color: rgb(96, 105, 128);
-}
-
-#clearhighbutton {
-  display: none;
+#startbutton {
   padding: 5px;
-  margin: 10px;
+  margin: 0px 0px 0px 150px;
 }
 
-#clearhighbutton:hover {
+#endbutton:hover,
+#startbutton:hover,
+#clearhighbutton:hover,
+#gobackbutton:hover,
+#viewhighbutton:hover {
   color: white;
   background-color: rgb(96, 105, 128);
+  padding: 5px;
 }
 
 #num {
@@ -106,11 +112,7 @@ main h3 {
   font-weight: bolder;
 }
 
-div h4 {
-  color: red;
-}
- 
-#scoreBox {
+#timeclock {
   color: red;
 }
 
@@ -121,41 +123,13 @@ div h4 {
   padding: 10px;
 }
 
-#initials {
-  display: none;
-}
-
+#initials,
 #highscores {
   display: none;
 }
 
-.justify-center {
-  justify-content: center;
-}
-
-#viewhighbutton:hover {
-  color: white;
-  background-color: rgb(96, 105, 128);
-  padding: 2px;
-}
-
-#startbutton {
-  margin: 40px 0px 0px 150px;
-}
-
-#startbutton:hover {
-  color: white;
-  background-color: rgb(96, 105, 128);
-  padding: 2px;
-}
-
-#endbutton:hover {
-  color: white;
-  background-color: rgb(96, 105, 128);
-}
-
-p {
-  margin-left: 150;
+footer p {
+  margin-left: 100;
 }
 
 h1 {
@@ -184,27 +158,6 @@ footer {
   text-decoration: none;
 }
 
-/* Tooltip must have its position relative to its container
-span[data-descr] {
-  position: relative;
-} */
-
-/* Position tooltip above the top left corner of the card.
-   Use the same color as header, no border-radius, smaller font size */
-/* span[data-descr]:hover::after,
-span[data-descr]:focus::after {
-  content: "Click inside the box for details";
-  position: absolute;
-  left: 5px;
-  top: -40px;
-  min-width: 150px;
-  border: 1px #aaaaaa solid;
-  background-color: var(--dark-blue-green);
-  padding: 12px;
-  color: white;
-  font-size: 80%;
-  z-index: 1;
-} */
 
 /* Mobile-first: use `max-width` values going from narrow -> wide */
 @media screen and (max-width: 480px) {
@@ -232,18 +185,6 @@ span[data-descr]:focus::after {
     font-size: 1rem;
     display: inline-flex;
   }
-
-  /* on tablets, set columns to only be 50% of the width and not grow */
-  .card-column {
-    /* Put two cards across */
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-
-/* select the last child to grow to full width if it has space to grow */
-  .card-column:last-child {
-    flex-grow: 1;
-  }
 }
 
 /* Mobile-first: use `max-width` values for medium size window */
@@ -251,24 +192,11 @@ span[data-descr]:focus::after {
   header {
     flex-direction: column;
   }
-
-  /* on tablets, set columns to only be 50% of the width and not grow */
-  .card-column {
-    /* Put two cards across */
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
 }
 
 /* media query for larger screens */
 @media screen and (min-width: 992px) {
   header div {
     flex-direction: column;
-  }
-
-  .card-column {
-    /* Put three cards across */
-    flex: 0 0 33.333%;
-    max-width: 33.333%;
   }
 }

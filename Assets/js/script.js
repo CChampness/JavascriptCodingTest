@@ -36,7 +36,6 @@ function refreshQuizItem (ndx) {
   textList[3].textContent = quizItem.d;
 }
 
-// var numOfInitials = 0;
 var listOfInitials = [];
 var trialList = [];
 
@@ -63,7 +62,6 @@ function getInitials() {
       if (initialItem.score > listOfInitials[i].score) {
         listOfInitials[i].score = initialItem.score;
       }
-      // console.log("listOfInitials[i].name " + listOfInitials[i].name);
     }
   }
   if (!found) {
@@ -73,9 +71,10 @@ function getInitials() {
 
   // Clean up the answer box
   initials.textContent = "";
-  doneBtns.style.display = "inline";
+  // doneBtns.style.display = "inline";
   goBackBtn.style.display = "inline";
   clearBtn.style.display = "inline";
+  viewHiBtn.style.display = "inline";
 }
 
 function viewHighScores() {
@@ -85,7 +84,7 @@ function viewHighScores() {
   viewHiBtn.style.display = "none";
   startBtn.style.display = "none";
   question.style.display = "none";
-  doneBtns.style.display = "inline";
+  // doneBtns.style.display = "inline";
   goBackBtn.style.display = "inline";
   clearBtn.style.display = "inline";
   hiScores.style.display = "block";
@@ -112,7 +111,6 @@ function viewHighScores() {
   initialItem.score = score;
 
   for(var i = 0; i < listOfInitials.length; i++) {
-    // console.log(listOfInitials[i].name + " " + listOfInitials[i].score);
     var node = document.createElement("li");
     var textnode = document.createTextNode(listOfInitials[i].name + " scored " + listOfInitials[i].score);
     node.appendChild(textnode);
@@ -127,9 +125,9 @@ function clearHigh() {
     inList.removeChild(inList.firstChild);
   }
 
-  hiScores.style.display = "none";
+  // hiScores.style.display = "none";
   clearBtn.style.display = "none";
-  viewHiBtn.style.display = "inline-block";
+  viewHiBtn.style.display = "inline";
 }
 
 // Retake the quiz
@@ -229,6 +227,8 @@ function startQuiz() {
   startBtn.style.display = "none";
   answerBox.style.display = "block";
   instructionBox.style.display = "none";
+  viewHiBtn.style.display = "none";
+
   timerDisp.style.display = "block";
   gameOn = true;
   refreshQuizItem(quizNdx);
