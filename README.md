@@ -29,3 +29,6 @@ high scores so that they can gauge their progress.
 
 ![demo](./Screenshot.gif)
 
+## Link to the published app:
+https://CChampness.github.io/JavascriptCodingTest
+
