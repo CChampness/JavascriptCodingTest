@@ -1,6 +1,7 @@
 
 var score = 0;
 var numList = document.querySelectorAll(".num");
+// var textList = document.querySelectorAll(".text");
 var textList = document.querySelectorAll(".text");
 var timerDisp = document.querySelector("#timerdisp");
 var timeClock = document.querySelector("#timeclock");
@@ -30,10 +31,10 @@ function refreshQuizItem (ndx) {
   numList[1].textContent = "2. ";
   numList[2].textContent = "3. ";
   numList[3].textContent = "4. ";
-  textList[0].textContent = quizItem.a;
-  textList[1].textContent = quizItem.b;
-  textList[2].textContent = quizItem.c;
-  textList[3].textContent = quizItem.d;
+  textList[0].innerHTML = quizItem.a;
+  textList[1].innerHTML = quizItem.b;
+  textList[2].innerHTML = quizItem.c;
+  textList[3].innerHTML = quizItem.d;
 }
 
 var listOfInitials = [];
@@ -99,7 +100,6 @@ function viewHighScores() {
     // If trialList is NOT null, we want to collect everything in it.
     listOfInitials = trialList;
   } else {
-    console.log("No scores listed");
     var node = document.createElement("LI");
     var textnode = document.createTextNode("No scores listed");
     node.appendChild(textnode);
@@ -186,8 +186,8 @@ function setTime() {
   }}, 1000);
 }
 
-function scoreAnswer(key, ndx) {
-  if (key === questionList[ndx].Answer) {
+function scoreAnswer (key) {
+  if (key === questionList[quizNdx].Answer) {
     score++;
     feedback.textContent = "Correct!"
   } else {
@@ -201,7 +201,7 @@ function scoreAnswer(key, ndx) {
   } else {
     // Time not expired, still more questions
     refreshQuizItem(quizNdx);
-  }
+  } 
 }
 
 document.addEventListener('keydown', catchKey);
@@ -213,13 +213,13 @@ function catchKey(e) {
   var keyCode = `${e.code}`;
   var key = keyCode[5];
   if (key === "1") {
-    scoreAnswer("a", quizNdx);
+    scoreAnswer("a");
   } else if (key === "2") {
-    scoreAnswer("b", quizNdx);
+    scoreAnswer("b");
   } else if (key === "3") {
-    scoreAnswer("c", quizNdx);
+    scoreAnswer("c");
   } else if (key === "4") {
-    scoreAnswer("d", quizNdx);
+    scoreAnswer("d");
   }
 }
 
@@ -228,7 +228,6 @@ function startQuiz() {
   answerBox.style.display = "block";
   instructionBox.style.display = "none";
   viewHiBtn.style.display = "none";
-
   timerDisp.style.display = "block";
   gameOn = true;
   refreshQuizItem(quizNdx);

@@ -38,6 +38,10 @@ main {
   margin: auto;
 }
 
+button:focus {
+  outline: none;
+}
+
 #question {
   padding: 10px;
 }
